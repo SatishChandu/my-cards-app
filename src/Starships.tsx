@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Button, Col, Container, Row, Spinner, Table } from 'react-bootstrap';
+import { Button, Container, Spinner, Table } from 'react-bootstrap';
 
 interface Profile {
     name: string;
@@ -67,68 +67,44 @@ const Starships: React.FC = () => {
                     </Spinner>
                 </div>
             ) : (
-            <Row>
-              {info.map((user, index) => (
-                <Col sm={12} md={6} lg={4} xl={3} key={index} className="mb-4">
-                    <Table striped bordered hover key={index}>
-                        <tbody>
-                            <tr>
-                                <td><strong>Name</strong></td>
-                                <td>{user.name}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Model</strong></td>
-                                <td>{user.model}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Manufacturer</strong></td>
-                                <td>{user.manufacturer}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Cost in Credits</strong></td>
-                                <td>{user.cost_in_credits}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Length</strong></td>
-                                <td>{user.length}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Max-Atmosphering-Speed</strong></td>
-                                <td>{user.max_atmosphering_speed}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Crew</strong></td>
-                                <td>{user.crew}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Passengers</strong></td>
-                                <td>{user.passengers}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Cargo-Capacity</strong></td>
-                                <td>{user.cargo_capacity}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Consumables</strong></td>
-                                <td>{user.consumables}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Hyperdrive-Rating</strong></td>
-                                <td>{user.hyperdrive_rating}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>MGLT</strong></td>
-                                <td>{user.MGLT}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Starship-Class</strong></td>
-                                <td>{user.starship_class}</td>
-                            </tr>
-                        </tbody>
-                    </Table>
-                </Col>
-              ))}
-            </Row>
+                <Table striped bordered hover>
+                    <thead className='text-center'>
+                        <tr>
+                            <th>Name</th>
+                            <th>Model</th>
+                            <th>Manufacturer</th>
+                            <th>Cost in Credits</th>
+                            <th>Length</th>
+                            <th>Max-Atmosphering-Speed</th>
+                            <th>Crew</th>
+                            <th>Passengers</th>
+                            <th>Cargo-Capacity</th>
+                            <th>Consumables</th>
+                            <th>Hyperdrive-Rating</th>
+                            <th>MGLT</th>
+                            <th>Starship-Class</th>
+                        </tr>
+                    </thead>
+                    <tbody className='text-center'>
+                    {info.map((user, index) => (
+                        <tr key={index}>
+                            <td>{user.name}</td>
+                            <td>{user.model}</td>
+                            <td>{user.manufacturer}</td>
+                            <td>{user.cost_in_credits}</td>
+                            <td>{user.length}</td>
+                            <td>{user.max_atmosphering_speed}</td>
+                            <td>{user.crew}</td>
+                            <td>{user.passengers}</td>
+                            <td>{user.cargo_capacity}</td>
+                            <td>{user.consumables}</td>
+                            <td>{user.hyperdrive_rating}</td>
+                            <td>{user.MGLT}</td>
+                            <td>{user.starship_class}</td>
+                        </tr>
+                         ))}
+                    </tbody>
+                </Table>
             )}
         </Container>
         <div className='d-flex justify-content-between align-content-center'>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {Container, Table, Row, Col, Button, Spinner} from 'react-bootstrap';
+import {Container, Table, Button, Spinner} from 'react-bootstrap';
 import axios from 'axios';
 
 interface Profile {
@@ -63,48 +63,34 @@ const People: React.FC = () => {
                     </Spinner>
                 </div>
             ) : (
-            <Row>
-              {info.map((user, index) => (
-                <Col sm={12} md={6} lg={4} xl={3} key={index} className="mb-4">
-                    <Table striped bordered hover key={index}>
-                        <tbody>
-                            <tr>
-                                <td><strong>Name</strong></td>
-                                <td>{user.name}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Height</strong></td>
-                                <td>{user.height}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Mass</strong></td>
-                                <td>{user.mass}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Hair Color</strong></td>
-                                <td>{user.hair_color}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Skin Color</strong></td>
-                                <td>{user.skin_color}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Eye Color</strong></td>
-                                <td>{user.eye_color}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Birth Year</strong></td>
-                                <td>{user.birth_year}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Gender</strong></td>
-                                <td>{user.gender}</td>
-                            </tr>
-                        </tbody>
-                    </Table>
-                </Col>
-              ))}
-            </Row>
+                <Table striped bordered hover>
+                    <thead className='text-center'>
+                        <tr>
+                            <th>Name</th>
+                            <th>Height</th>
+                            <th>Mass</th>
+                            <th>Hair Color</th>
+                            <th>Skin Color</th>
+                            <th>Eye Color</th>
+                            <th>Birth Year</th>
+                            <th>Gender</th>
+                        </tr>
+                    </thead>
+                    <tbody className='text-center'>
+                    {info.map((user, index) => (
+                        <tr key={index}>
+                            <td>{user.name}</td>
+                            <td>{user.height}</td>
+                            <td>{user.mass}</td>
+                            <td>{user.hair_color}</td>
+                            <td>{user.skin_color}</td>
+                            <td>{user.eye_color}</td>
+                            <td>{user.birth_year}</td>
+                            <td>{user.gender}</td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </Table>
             )}
         </Container>
         <div className='d-flex justify-content-between align-content-center'>

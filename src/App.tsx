@@ -6,7 +6,6 @@ import Starships from './Starships';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container } from 'react-bootstrap';
 
-
 const Layout: React.FC = () => {
   return (
     <>
@@ -21,6 +20,7 @@ const Layout: React.FC = () => {
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
+      <Route index element={<People />} />
       <Route path="people" element={<People />} />
       <Route path="planets" element={<Planets />} />
       <Route path="starships" element={<Starships />} />

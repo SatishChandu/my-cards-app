@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Button, Col, Container, Row, Spinner, Table } from 'react-bootstrap';
+import { Button, Container, Spinner, Table } from 'react-bootstrap';
 
 interface Profile {
     name: string;
@@ -63,52 +63,36 @@ const Planets: React.FC = () => {
                     </Spinner>
                 </div>
             ) : (
-            <Row>
-              {info.map((user, index) => (
-                <Col sm={12} md={6} lg={4} xl={3} key={index} className="mb-4">
-                    <Table striped bordered hover key={index}>
-                        <tbody>
-                            <tr>
-                                <td><strong>Name</strong></td>
-                                <td>{user.name}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Rotation Period</strong></td>
-                                <td>{user.rotation_period}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Orbital Period</strong></td>
-                                <td>{user.orbital_period}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Diameter</strong></td>
-                                <td>{user.diameter}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Climate</strong></td>
-                                <td>{user.climate}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Gravity</strong></td>
-                                <td>{user.gravity}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Terrain</strong></td>
-                                <td>{user.terrain}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Surface Water</strong></td>
-                                <td>{user.surface_water}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Population</strong></td>
-                                <td>{user.population}</td>
-                            </tr>
-                        </tbody>
-                    </Table>
-                </Col>
-              ))}
-            </Row>
+                <Table striped bordered hover>
+                    <thead className='text-center'>
+                        <tr>
+                            <th>Name</th>
+                            <th>Rotation Period</th>
+                            <th>Orbital Period</th>
+                            <th>Diameter</th>
+                            <th>Climate</th>
+                            <th>Gravity</th>
+                            <th>Terrain</th>
+                            <th>Surface Water</th>
+                            <th>Population</th>
+                        </tr>
+                    </thead>
+                    <tbody className='text-center'>
+                    {info.map((user, index) => (
+                        <tr key={index}>
+                            <td>{user.name}</td>
+                            <td>{user.rotation_period}</td>
+                            <td>{user.orbital_period}</td>
+                            <td>{user.diameter}</td>
+                            <td>{user.climate}</td>
+                            <td>{user.gravity}</td>
+                            <td>{user.terrain}</td>
+                            <td>{user.surface_water}</td>
+                            <td>{user.population}</td>
+                        </tr>
+                        ))}
+                    </tbody>
+                </Table>
             )}
         </Container>
         <div className='d-flex justify-content-between align-content-center'>

@@ -13,12 +13,12 @@ interface Profile {
     gender: string;
 }
 
-const Cards: React.FC = () => {
+const People: React.FC = () => {
     const [info, setInfo] = useState<Profile[]>([]);
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(false);
     const [hasNextPage, setHasNextPage] = useState(true);
-    const [totalPages, setTotalPages] = useState<number | null>(null);
+    const [totalPages, setTotalPages] = useState<number>(0);
     const pageSize = 10;
 
     useEffect(() => {
@@ -28,7 +28,7 @@ const Cards: React.FC = () => {
     const fetchData = async (pageNumber: number, pageSize: number) => {
         setLoading(true);
         try {
-            const res =  await axios.get(`https://swapi.dev/api/people/?page=${pageNumber}&limit=${pageSize}`);
+            const res =  await axios.get(`https://swapi.dev/api/people/?page=${pageNumber}`);
             setInfo(res.data.results);
 
             const totalRecords = res.data.count;
@@ -119,4 +119,4 @@ const Cards: React.FC = () => {
   )
 }
 
-export default Cards;
+export default People;

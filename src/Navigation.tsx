@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 const Navigation: React.FC = () => {
   return (
     <>
-      <Navbar bg="primary" data-bs-theme="dark" className='sticky-top m-1 p-2'>
+      <Navbar bg="primary" data-bs-theme="dark" className='sticky-top'>
           <Container>
             <Navbar.Brand>StarWarsAPI</Navbar.Brand>
             <Nav className="me-auto">

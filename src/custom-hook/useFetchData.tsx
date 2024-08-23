@@ -23,22 +23,40 @@ function useFetchData<T>(url: string, pageSize: number) {
     const [hasNextPage, setHasNextPage] = useState(true);
     const [totalPages, setTotalPages] = useState<number>(0);
 
+    const fetchHomeWorld = async (url: string) => {
+        try {
+            const res = await axios.get(url);
+            return Object.fromEntries(
+                Object.entries(res.data).filter(([key, value]) => typeof value === "string" && !value.includes("http"))
+            );
+        } catch(err){
+            console.error("Error in fetching the Home World data", err);
+            return null;
+        }
+    };
+
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
             try {
                 const res = await axios.get(`${url}?page=${page}`);
-                const filteredResults = res.data.results.map((item: any) => {
+                const filteredResults = await Promise.all(res.data.results.map(async (item: any) => {
                     const fileteredItem = Object.fromEntries(
-                        Object.entries(item).filter(([key, value]) => typeof value === "string" && !value.startsWith("http"))
+                        Object.entries(item).filter(([key, value]) => typeof value === "string" && !value.includes("http"))
                     );
                     Object.keys(fileteredItem).forEach(key => {
                         if(key.toLowerCase().includes("created") || key.toLowerCase().includes("edited")) {
                             fileteredItem[key] = formatDateToIST(fileteredItem[key]);
                         }
                     });
+
+                    if(item.homeworld) {
+                        fileteredItem.homeworldData = await fetchHomeWorld(item.homeworld);
+                    }
+
+                    
                     return fileteredItem;
-                });
+                }));
                 setInfo(filteredResults);
                 
                 const totalRecords = res.data.count;

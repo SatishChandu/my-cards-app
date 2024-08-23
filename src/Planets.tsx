@@ -8,10 +8,6 @@ const Planets: React.FC = () => {
     const { info, loading, page, totalPages, hasNextPage, handleNextPage, handlePreviousPage } =
     useFetchData('https://swapi.dev/api/planets', 10);
 
-    const handlePreview = (item: any) => {
-        console.log("Previw", item);
-    };
-
     const handleEdit = (item: any) => {
         console.log('Edit', item);
     };
@@ -33,7 +29,6 @@ const Planets: React.FC = () => {
                     <div className='scrollbar-container'>
                         <DynamicTable 
                             data={info}
-                            onPreview={handlePreview}
                             onEdit={handleEdit}
                             onDelete={handleDelete} 
                         />

@@ -1,5 +1,5 @@
 .scrollbar-container {
-    max-height: 500px;
+    max-height: 430px;
     overflow-y: auto;
     margin-bottom: 20px;
 }
@@ -16,4 +16,10 @@
 .action-cell {
     display: flex;
     justify-content: center;
+}
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    
 }

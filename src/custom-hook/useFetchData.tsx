@@ -27,7 +27,7 @@ function useFetchData<T>(url: string, pageSize: number) {
         try {
             const res = await axios.get(url);
             return Object.fromEntries(
-                Object.entries(res.data).filter(([key, value]) => typeof value === "string" && !value.includes("http"))
+                Object.entries(res.data).filter(([key, value]) => typeof value === "string" && !value.includes("http") && key !== "url")
             );
         } catch(err){
             console.error("Error in fetching the Home World data", err);
@@ -42,11 +42,11 @@ function useFetchData<T>(url: string, pageSize: number) {
                 const res = await axios.get(`${url}?page=${page}`);
                 const filteredResults = await Promise.all(res.data.results.map(async (item: any) => {
                     const fileteredItem = Object.fromEntries(
-                        Object.entries(item).filter(([key, value]) => typeof value === "string" && !value.includes("http"))
+                        Object.entries(item).filter(([key, value]) => typeof value === "string" && !value.includes("http") && key !== "url")
                     );
                     Object.keys(fileteredItem).forEach(key => {
                         if(key.toLowerCase().includes("created") || key.toLowerCase().includes("edited")) {
-                            fileteredItem[key] = formatDateToIST(fileteredItem[key]);
+                            fileteredItem[key] = formatDateToIST(fileteredItem[key] as string);
                         }
                     });
 

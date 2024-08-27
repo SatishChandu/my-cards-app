@@ -4,6 +4,7 @@ import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
 import PreviewModal from "../PreviewModal";
 
 interface DynamicTableProps {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     data: any[];
     onEdit: (item: any) => void;
     onDelete: (item: any) => void;
@@ -56,9 +57,11 @@ const DynamicTable: React.FC<DynamicTableProps> = ({ data, onEdit, onDelete }) =
                         {headers.map((header, colIndex) => (
                             <td key={colIndex}>
                                 {header === 'homeworldData' ? (
-                                    <Button variant="info" size="sm" onClick={() => handlePreview(item.homeworldData)}>
-                                        View
-                                    </Button>
+                                    <div className="view-button">
+                                        <Button variant="info" size="sm" onClick={() => handlePreview(item.homeworldData)}>
+                                            View
+                                        </Button>
+                                    </div>
                                 ) : (
                                     item[header]
                                 )}

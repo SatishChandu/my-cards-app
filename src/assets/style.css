@@ -16,10 +16,17 @@
 .action-cell {
     display: flex;
     justify-content: center;
+    margin-top: 10px;
 }
 .modal-body {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    
+}
+.view-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 20px;
 }

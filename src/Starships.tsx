@@ -8,11 +8,11 @@ const Starships: React.FC = () => {
     const { info, loading, page, totalPages, hasNextPage, handleNextPage, handlePreviousPage } =
     useFetchData('https://swapi.dev/api/starships', 10);
 
-    const handleEdit = (item: any) => {
+    const handleEdit = (item: unknown) => {
         console.log('Edit', item);
     };
 
-    const handleDelete = (item: any) => {
+    const handleDelete = (item: unknown) => {
         console.log('Delete', item);
     };
 

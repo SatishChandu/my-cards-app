@@ -16,7 +16,7 @@ const DynamicTable: React.FC<DynamicTableProps> = ({ data, onEdit, onDelete }) =
     if(data.length === 0) return null;
 
     const headers = Object.keys(data[0]);
-
+ 
     const handlePreview = (item: any) => {
         setSelectedItem(item);
         setShowModal(true);
